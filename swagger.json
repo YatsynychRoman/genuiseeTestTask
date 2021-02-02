@@ -97,7 +97,7 @@
         "tags": [
           "CRUD"
         ],
-        "description": "PATCH request for updating any product with specified ASIN and Seller Name\n- ASIN and Seller Name are required!\n- 'fieldToChange': naming of field you want to change, 'value to change': value for that field e.g. 'fullPrice: 560$'",
+        "description": "PATCH request for updating any product with specified ASIN and Seller Name\n- ASIN and Seller Name are required!\n- 'fieldToChange': naming of field you want to change, 'value to change': value for that field e.g. 'fullPrice: 560'",
         "parameters": [
           {
             "name": "Body",
