@@ -1,0 +1,132 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Genuisee Test Task",
+    "description": "CRUD for external API"
+  },
+  "host": "genuiseetesttask.herokuapp.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "CRUD",
+      "description": "CRUD for API"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/asin/": {
+      "post": {
+        "tags": [
+          "CRUD"
+        ],
+        "description": "POST request to create fulfilled storage with products \n- Body should be empty",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "description": "Should be empty",
+            "required": false,
+            "schema": {}
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All responses with 200 code, error handling via 'Error' property in response"
+          }
+        }
+      }
+    },
+    "/asin/:asin": {
+      "get": {
+        "tags": [
+          "CRUD"
+        ],
+        "description": "GET request for getting products with specified ASIN",
+        "parameters": [
+          {
+            "name": "ASIN",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All responses with 200 code, error handling via 'Error' property in response"
+          }
+        }
+      }
+    },
+    "/asin/": {
+      "delete": {
+        "tags": [
+          "CRUD"
+        ],
+        "description": "DELETE request for deleting products with specified ASIN",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "description": "ASIN must be provided",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "asin": {
+                  "type": "string",
+                  "default": "*ASIN*"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All responses with 200 code, error handling via 'Error' property in response"
+          }
+        }
+      }
+    },
+    "/asin/": {
+      "patch": {
+        "tags": [
+          "CRUD"
+        ],
+        "description": "PATCH request for updating any product with specified ASIN and Seller Name\n- ASIN and Seller Name are required!\n- 'fieldToChange': naming of field you want to change, 'value to change': value for that field e.g. 'fullPrice: 560$'",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "asin": {
+                  "type": "string",
+                  "default": "*ASIN*"
+                },
+                "sellerName": {
+                  "type": "string",
+                  "default": "*seller name*"
+                },
+                "fieldToChange": {
+                  "type": "string",
+                  "default": "*value to change*"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All responses with 200 code, error handling via 'Error' property in response"
+          }
+        }
+      }
+    }
+  }
+}
