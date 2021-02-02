@@ -39,20 +39,33 @@
             "description": "All responses with 200 code, error handling via 'Error' property in response"
           }
         }
-      }
-    },
-    "/asin/:asin": {
-      "get": {
+      },
+      "patch": {
         "tags": [
           "CRUD"
         ],
-        "description": "GET request for getting products with specified ASIN",
+        "description": "PATCH request for updating any product with specified ASIN and Seller Name\n- ASIN and Seller Name are required!\n- 'fieldToChange': naming of field you want to change, 'value to change': value for that field e.g. 'fullPrice: 560'",
         "parameters": [
           {
-            "name": "ASIN",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "asin": {
+                  "type": "string",
+                  "default": "*ASIN*"
+                },
+                "sellerName": {
+                  "type": "string",
+                  "default": "*seller name*"
+                },
+                "fieldToChange": {
+                  "type": "string",
+                  "default": "*value to change*"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -60,9 +73,7 @@
             "description": "All responses with 200 code, error handling via 'Error' property in response"
           }
         }
-      }
-    },
-    "/asin/": {
+      },
       "delete": {
         "tags": [
           "CRUD"
@@ -92,33 +103,18 @@
         }
       }
     },
-    "/asin/": {
-      "patch": {
+    "/asin/{asin}": {
+      "get": {
         "tags": [
           "CRUD"
         ],
-        "description": "PATCH request for updating any product with specified ASIN and Seller Name\n- ASIN and Seller Name are required!\n- 'fieldToChange': naming of field you want to change, 'value to change': value for that field e.g. 'fullPrice: 560'",
+        "description": "GET request for getting products with specified ASIN",
         "parameters": [
           {
-            "name": "Body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "asin": {
-                  "type": "string",
-                  "default": "*ASIN*"
-                },
-                "sellerName": {
-                  "type": "string",
-                  "default": "*seller name*"
-                },
-                "fieldToChange": {
-                  "type": "string",
-                  "default": "*value to change*"
-                }
-              }
-            }
+            "name": "asin",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {

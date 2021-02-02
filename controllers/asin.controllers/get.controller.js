@@ -3,7 +3,7 @@
 module.exports = (req, res) => {
     try{
         const asin = req.params.asin
-
+        console.log(req.params)
         const data = global.products[asin]
 
         if(!data) return res.status(200).send({messsage: 'There is no products with such ASIN', error: false})
